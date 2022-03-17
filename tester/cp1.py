@@ -6,29 +6,78 @@ test = {
             'cases': [
                 {
                     'code': r"""
-                    >>> # It seems AB is undefined. Have you defined it correctly?
-                    >>> 'AB' in dir()
+                    >>> # It seems checkDims is undefined. Have you defined it correctly?
+                    >>> 'checkDims' in dir()
                     True
                     """
                 },
                 {
                     'code': r"""
-                    >>> # Your multiplication is incorrect.
-                    >>> # You must be using the matrices A and B as defined above.
-                    >>> np.allclose(AB, np.array([[-1,2,1,11],[1,2,3,13]]), atol=10**-3, rtol=0)
+                    >>> # It seems A_svd is undefined. Have you defined it correctly?
+                    >>> 'A_svd' in dir()
                     True
                     """
                 },
                 {
                     'code': r"""
-                    >>> # This should throw an exception...
-                    >>> # You seem to have redefined the value of A or B.
-                    >>> np.matmul(B,A)
-                    Traceback (most recent call last):
-                    ...
-                    ValueError: matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 2 is different from 4)
+                    >>> # Your matrix A_svd[0] is not correct. Double check your values.
+                    >>> np.allclose(A_svd[0], np.load('tester/res/A_svd0.npy'), atol=10**-1, rtol=0)
+                    True
                     """
-                }
+                },
+                {
+                    'code': r"""
+                    >>> # Your matrix A_svd[1] is not correct. Double check your values.
+                    >>> np.allclose(A_svd[1], np.load('tester/res/A_svd1.npy'), atol=10**-1, rtol=0)
+                    True
+                    """
+                },
+                {
+                    'code': r"""
+                    >>> # Your matrix A_svd[2] is not correct. Double check your values.
+                    >>> np.allclose(A_svd[2], np.load('tester/res/A_svd2.npy'), atol=10**-1, rtol=0)
+                    True
+                    """
+                },
+                {
+                    'code': r"""
+                    >>> # Your matrix A_svd[3] is not correct. Double check your values.
+                    >>> np.allclose(A_svd[3], np.load('tester/res/A_svd3.npy'), atol=10**-1, rtol=0)
+                    True
+                    """
+                },
+                {
+                    'code': r"""
+                    >>> # Your checkDims doesn't give the correct output for A_svd[0].
+                    >>> # Have you handled your dimensions, specifically D, correctly?
+                    >>> checkDims(A_svd[0]) == (2, 2, 2, 3, 3, 3)
+                    True
+                    """
+                },
+                {
+                    'code': r"""
+                    >>> # Your checkDims doesn't give the correct output for A_svd[1].
+                    >>> # Have you handled your dimensions, specifically D, correctly?
+                    >>> checkDims(A_svd[1]) == (2, 2, 2, 4, 4, 4)
+                    True
+                    """
+                },
+                {
+                    'code': r"""
+                    >>> # Your checkDims doesn't give the correct output for A_svd[2].
+                    >>> # Have you handled your dimensions, specifically D, correctly?
+                    >>> checkDims(A_svd[2]) == (3, 3, 3, 2, 2 ,2)
+                    True
+                    """
+                },
+                {
+                    'code': r"""
+                    >>> # Your checkDims doesn't give the correct output for A_svd[3].
+                    >>> # Have you handled your dimensions, specifically D, correctly?
+                    >>> checkDims(A_svd[3]) == (4, 4, 4, 2, 2, 2)
+                    True
+                    """
+                },
             ],
             'scored': True,
             'type': 'doctest'
