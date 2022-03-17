@@ -1,0 +1,15 @@
+{
+    "name": "Lab4",
+    "endpoint": "rhul/cs2900/sp22/lab4",
+    "src": [
+        "Lab4.ipynb"
+    ],
+    "tests": {
+        "tester/cp*.py": "ok_test"
+    },
+    "protocols": [
+        "file_contents",
+        "grading",
+        "scoring"
+    ]
+}
