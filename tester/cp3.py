@@ -23,7 +23,7 @@ test = {
                     'code': r"""
                     >>> # Your version of runDiffusion isn't giving the correct output.
                     >>> # Please have another look at the algorithm. 
-                    >>> finalAnswercp3 = np.array([0.33217593 0.33287037 0.16689815 0.11064815 0.05740741])
+                    >>> finalAnswercp3 = np.array([0.33217593, 0.33287037, 0.16689815, 0.11064815, 0.05740741])
                     >>> np.allclose(finalAnswercp3,runDiffusion(np.array([[0,1,0,0,0], [1,0,1,0,0], [1,0,0,1,1], [1,0,0,0,0], [0,0,0,1,0]],0.01),atol=10**-2, rtol=0) 
                     True
                     """
