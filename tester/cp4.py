@@ -6,30 +6,28 @@ test = {
             'cases': [
                 {
                     'code': r"""
-                    >>> # It seems doSVDFit is undefined. Have you defined it correctly?
-                    >>> 'doSVDFit' in dir()
+                    >>> # It seems that runPageRank is undefined. Have you defined it correctly?
+                    >>> 'runPageRank' in dir()
                     True
                     """
                 },
                 {
                     'code': r"""
-                    >>> # Your doSVDFit function isn't returning the correct type.
-                    >>> # We're expecting a tuple, not a NumPy array!
-                    >>> p = doSVDFit(x, y)
-                    >>> type(p).__name__ == 'tuple'
+                    >>> # It seems that runPageRank is not returning a numpy vector. Have you defined it correctly?
+                    >>> # Remember if the adjacency matrix is an NxN matrix then it should return an N-dim column vector.
+                    >>> runDiffusion(np.array([[0,1],[1,0]]),1e-5,0.8).shape = (2,)
+                    True
+                    """
+                },                
+                {
+                    'code': r"""
+                    >>> # Your version of runPageRank isn't giving the correct output.
+                    >>> # Please have another look at the algorithm. 
+                    >>> finalAnswercp4 = np.array([0.31795041, 0.29431393, 0.1577554,  0.1478989,  0.08208136] )
+                    >>> np.allclose(finalAnswercp4,runPageRank(np.array([[0,1,0,0,0], [1,0,1,0,0], [1,0,0,1,1], [1,0,0,0,0], [0,0,0,1,0]],0.01),atol=10**-2, rtol=0) 
                     True
                     """
                 },
-                {
-                    'code': r"""
-                    >>> # Your doSVDFit function isn't returning the correct result.
-                    >>> # Refer to the formula given and ensure you're calculating m and c
-                    >>> # using the np.linalg.pinv function.
-                    >>> x, y = np.load('tester/res/cp4_x.npy'), np.load('tester/res/cp4_y.npy')
-                    >>> doSVDFit(x, y) == (1, -0.95)
-                    True
-                    """
-                }
             ],
             'scored': True,
             'type': 'doctest'
