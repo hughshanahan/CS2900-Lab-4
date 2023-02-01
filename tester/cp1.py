@@ -6,75 +6,48 @@ test = {
             'cases': [
                 {
                     'code': r"""
-                    >>> # It seems checkDims is undefined. Have you defined it correctly?
-                    >>> 'checkDims' in dir()
+                    >>> # It seems compDiffusion is undefined. Have you defined it correctly?
+                    >>> 'compDiffusion' in dir()
                     True
                     """
                 },
                 {
                     'code': r"""
-                    >>> # It seems A_svd is undefined. Have you defined it correctly?
-                    >>> 'A_svd' in dir()
+                    >>> # It seems compDiffusion doesn't check if the matrix passed to it is an adjacency matrix.
+                    >>> # Are you checking if the matrix is a square matrix with integer entries? 
+                    >>> # Does compDiffusion return -1 if it is not the case?
+                    >>> compDiffusion(np.array([[1,2,3],[3,2,1]])) == -1 and compDiffusion(np.array([[1,2.0],[3.0,2]])) == -1 
                     True
                     """
                 },
                 {
                     'code': r"""
-                    >>> # Your matrix A_svd[0] is not correct. Double check your values.
-                    >>> np.allclose(A_svd[0], np.load('tester/res/A_svd0.npy'), atol=10**-1, rtol=0)
+                    >>> # compDiffusion is not returning the right type of matrix.
+                    >>> # Does it return a matrix with the same dimensions as the inputted matrix?
+                    >>> compDiffusion(np.array([[0,1,1],[1,0,0],[1,0,0]])).shape == (3,3)
                     True
                     """
                 },
                 {
                     'code': r"""
-                    >>> # Your matrix A_svd[1] is not correct. Double check your values.
-                    >>> np.allclose(A_svd[1], np.load('tester/res/A_svd1.npy'), atol=10**-1, rtol=0)
+                    >>> # compDiffusion is not returning a matrix with floating point numbers.
+                    >>> compDiffusion(np.array([[0,1,1],[1,0,0],[1,0,0]])).dtype == 'float64'
                     True
                     """
                 },
                 {
                     'code': r"""
-                    >>> # Your matrix A_svd[2] is not correct. Double check your values.
-                    >>> np.allclose(A_svd[2], np.load('tester/res/A_svd2.npy'), atol=10**-1, rtol=0)
-                    True
-                    """
-                },
-                {
-                    'code': r"""
-                    >>> # Your matrix A_svd[3] is not correct. Double check your values.
-                    >>> np.allclose(A_svd[3], np.load('tester/res/A_svd3.npy'), atol=10**-1, rtol=0)
-                    True
-                    """
-                },
-                {
-                    'code': r"""
-                    >>> # Your checkDims doesn't give the correct output for A_svd[0].
-                    >>> # Have you handled your dimensions, specifically D, correctly?
-                    >>> checkDims(A_svd[0]) == (2, 2, 2, 3, 3, 3)
-                    True
-                    """
-                },
-                {
-                    'code': r"""
-                    >>> # Your checkDims doesn't give the correct output for A_svd[1].
-                    >>> # Have you handled your dimensions, specifically D, correctly?
-                    >>> checkDims(A_svd[1]) == (2, 2, 2, 4, 4, 4)
-                    True
-                    """
-                },
-                {
-                    'code': r"""
-                    >>> # Your checkDims doesn't give the correct output for A_svd[2].
-                    >>> # Have you handled your dimensions, specifically D, correctly?
-                    >>> checkDims(A_svd[2]) == (3, 3, 3, 2, 2 ,2)
-                    True
-                    """
-                },
-                {
-                    'code': r"""
-                    >>> # Your checkDims doesn't give the correct output for A_svd[3].
-                    >>> # Have you handled your dimensions, specifically D, correctly?
-                    >>> checkDims(A_svd[3]) == (4, 4, 4, 2, 2, 2)
+                    >>> # compDiffusion does not compute the correct diffusion matrix. 
+                    >>> # For example the adjacency matrix 
+                    >>> # (0,1,1)
+                    >>> # (1,0,0)
+                    >>> # (1,0,0)
+                    >>> # should return 
+                    >>> # (0,0.5,0.5)
+                    >>> # (1.0,0,0)
+                    >>> # (1.0,0,0)
+                    >>> # please check your function again
+                    >>> np.allclose(compDiffusion(np.array([[0,1,1],[1,0,0],[1,0,0]])), np.array([[0,0.5,0.5],[1.0,0,0],[1.0,0,0]]), atol=10**-2, rtol=0)
                     True
                     """
                 },
