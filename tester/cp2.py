@@ -13,24 +13,24 @@ test = {
                 },
                 {
                     'code': r"""
-                    >>> # It seems that D1hand is undefined. Have you defined it correctly?
-                    >>> 'D1hand' in dir()
+                    >>> # It seems that D1Thand is undefined. Have you defined it correctly?
+                    >>> 'D1Thand' in dir()
                     True
                     """
                 },                
                 {
                     'code': r"""
-                    >>> # It seems the dimensons of D1hand are incorrect.
-                    >>> # Are you checking if the dimensions of D1hand are those of A1? 
-                    >>> D1hand.shape == (5,5) 
+                    >>> # It seems the dimensons of D1Thand are incorrect.
+                    >>> # Are you checking if the dimensions of D1Thand are those of A1? 
+                    >>> D1Thand.shape == (5,5) 
                     True
                     """
                 },
                 {
                     'code': r"""
-                    >>> # The diffusion matrix of A1 computed using compDiffusion does not match with D1hand. 
+                    >>> # The transpose of the diffusion matrix of A1 computed using compDiffusion does not match with D1Thand. 
                     >>> # Have you checked your calculation of D1hand?
-                    >>> np.allclose(compDiffusion(A1),D1hand,rtol=0.01) 
+                    >>> np.allclose(compDiffusion(A1),D1Thand,rtol=0.01) 
                     True
                     """
                 },

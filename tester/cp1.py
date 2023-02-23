@@ -43,11 +43,11 @@ test = {
                     >>> # (1,0,0)
                     >>> # (1,0,0)
                     >>> # should return 
-                    >>> # (0,0.5,0.5)
-                    >>> # (1.0,0,0)
-                    >>> # (1.0,0,0)
+                    >>> # (0.0, 1.0, 1.0)       
+                    >>> # (0.5, 0.0, 0.0)    
+                    >>> # (0.5, 0.0, 0.0)       
                     >>> # please check your function again
-                    >>> np.allclose(compDiffusion(np.array([[0,1,1],[1,0,0],[1,0,0]])), np.array([[0,0.5,0.5],[1.0,0,0],[1.0,0,0]]), atol=10**-2, rtol=0)
+                    >>> np.allclose(compDiffusion(np.array([[0,1,1],[1,0,0],[1,0,0]])), np.transpose(np.array([[0,0.5,0.5],[1.0,0,0],[1.0,0,0]])), atol=10**-2, rtol=0)
                     True
                     """
                 },
